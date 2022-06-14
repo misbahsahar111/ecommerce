@@ -1,0 +1,20 @@
+<h1>Products</h1>
+<% @products.each do |product| %>
+    <h2><%= product.name%></h2>
+
+    <p>
+    <strong>Price:</strong>
+    <%= product.price%>
+    </p>
+
+    <p>
+    <strong>Description:</strong>
+    <%= product.description%>
+    </p>
+
+    
+      <%= image_tag product.image.url ,class:"w-25 p-3"%>
+  
+
+<% end %>
+
