@@ -1,5 +1,6 @@
-img.product-index{
-    width: 400px;
+@import "bootstrap";
+img.product-show{
+    width: 100px;
     height: auto;
 
 }

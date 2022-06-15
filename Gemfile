@@ -6,6 +6,7 @@ gem 'activeadmin'
 gem 'devise'
 gem 'sassc-rails' 
 gem 'carrierwave'
+gem 'mini_magick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.5'
