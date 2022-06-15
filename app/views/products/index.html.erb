@@ -7,13 +7,15 @@
     <%= product.price%>
     </p>
 
-    <p>
-    <strong>Description:</strong>
-    <%= product.description%>
-    </p>
 
-    
-      <%= image_tag product.image.url ,class:"product-show"%>
+<%= link_to "show", product_path(product),class:"btn btn-primary "%>
+
+<%= form_for @cart_item do |f|%>
+  <%= f.hidden_field :product_id, :value => product.id %>
+  <%= f.number_field :quantity, :value =>1, :min =>1 %>
+  <%= f.submit "Add to cart"%>
+  <%end%>
+
   
 
 <% end %>
