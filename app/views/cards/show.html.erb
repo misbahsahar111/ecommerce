@@ -1,0 +1,15 @@
+<h1>Cards</h1>
+
+<% @cart_items.each do |item| %>
+
+    <h3><%= item.product.name%></h3>
+    <h3><%= item.product.price%></h3>
+    
+
+    <%= form_for item do |f|%>
+        <%= f.hidden_field :product_id, :value => item.product.id %>
+        <%= f.number_field :quantity, :value => item.quantity.to_i%>
+        <%= f.submit "Update cart"%>
+        <%end%>
+        
+    <% end %>
