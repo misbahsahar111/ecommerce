@@ -1,4 +1,4 @@
-<h1>Cards</h1>
+<h1>Your Cart</h1>
 
 <% @cart_items.each do |item| %>
 
@@ -10,6 +10,13 @@
         <%= f.hidden_field :product_id, :value => item.product.id %>
         <%= f.number_field :quantity, :value => item.quantity.to_i%>
         <%= f.submit "Update cart"%>
+
+        <%= link_to "Destroy", cart_item_path(item), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %>
         <%end%>
-        
+        <h2>Subtotal: <%= item.total %></h3> 
     <% end %>
+
+    <h3>You Current Cart value is  <%= current_order.subtotal%></h3>
