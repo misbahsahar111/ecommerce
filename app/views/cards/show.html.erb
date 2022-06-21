@@ -1,22 +1,47 @@
-<h1>Your Cart</h1>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">Navbar</a>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+                <div class="col-md-8">
+                    <div class="p-2">
+                        <h4>Shopping cart</h4>
+
+
+<br>
 
 <% @cart_items.each do |item| %>
-
-    <h3><%= item.product.name%></h3>
-    <h3><%= item.product.price%></h3>
-    
-
+  <div class="card">
+  <div class="card-header">
+  <%= item.product.name%>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= item.product.description%></h5>
+    <p class="card-text">Price: <%= item.product.price%></p>
     <%= form_for item do |f|%>
-        <%= f.hidden_field :product_id, :value => item.product.id %>
-        <%= f.number_field :quantity, :value => item.quantity.to_i%>
-        <%= f.submit "Update cart"%>
+      <%= f.hidden_field :product_id, :value => item.product.id %>
+      <%= f.number_field :quantity, :value => item.quantity.to_i%>
+      <%= f.submit "Update cart" , class:"btn btn-primary "%>
+      <br>
+      <%= link_to "Destroy", cart_item_path(item), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+      <h4>Subtotal: <%= item.total %></h4> 
+    <%end%>
+  </div>
+</div>
 
-        <%= link_to "Destroy", cart_item_path(item), data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-          } %>
-        <%end%>
-        <h2>Subtotal: <%= item.total %></h3> 
+  <br><br>    
     <% end %>
 
-    <h3>You Current Cart value is  <%= current_order.subtotal%></h3>
+    <h5>You Current Cart value is  <%= current_order.subtotal%></h5>
+
+    <a href="#" class="btn btn-primary">Check Out</a>

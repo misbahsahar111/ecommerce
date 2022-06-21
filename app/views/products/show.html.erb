@@ -1,12 +1,45 @@
-<h1>Products</h1>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">View Product</a>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<br><br>
+<main class="container1">
+<div class="left-column">
+<%= image_tag @product.image.url ,class:"w-50 p-5"%>
+  </div>
 
-    
-      <%= image_tag @product.image.url ,class:"product-show"%>
+  <div class="right-column">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+      <span><%= @product.name %></span>
+      <h1>Beats EP</h1>
+      <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+    </div>
+ 
+  
+ 
+    <!-- Product Pricing -->
+    <h4>Price: </h4>
+      <span><%= @product.price %></span>
+      <br><br>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+</main>
+
+
+ 
   
       
-      <h1><%= @product.name %></h1>
-      <p><%= @product.price %></p>
+      
+      
       <p><%= @product.description %></p>
-
+      
 
 

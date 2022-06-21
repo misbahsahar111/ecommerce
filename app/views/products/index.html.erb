@@ -1,24 +1,44 @@
-<h1>Products</h1>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">Food Mart</a>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<br><br>
+<div class="container">
+<div class="row">
+
 <% @products.each do |product| %>
-    <h2><%= product.name%></h2>
+  <div class="col-4"> 
 
-    <p>
-    <strong>Price:</strong>
-    <%= product.price%>
-    </p>
+<div class="card" style="width: 18rem;">
+<%= image_tag product.image.url ,class:"card-img-top",width:"286",height:"180"%>
+  <div class="card-body">
+    <h5 class="card-title"><%= product.price%></h5>
+    <p class="card-text"><%= product.name%></p>
+   
+    <%= form_for @cart_item do |f|%>
+      <%= f.hidden_field :product_id, :value => product.id %>
+      <%= f.number_field :quantity, :value => 1, :min => 1 %>
+      <br><br>
+      <%= f.submit "Add to cart",class:"btn btn-primary "%>
+      
+      <%= link_to "show", product_path(product),class:"btn btn-primary"%>
+      <%end%>
+    
+  </div>
+</div>
 
-
-<%= link_to "show", product_path(product),class:"btn btn-primary "%>
-
-<%= form_for @cart_item do |f|%>
-  <%= f.hidden_field :product_id, :value => product.id %>
-  <%= f.number_field :quantity, :value => 1, :min => 1 %>
-  <%= f.submit "Add to cart"%>
-  <%end%>
 
   
-  
+  </div>
 <% end %>
-
+</div>
+</div>
+<br><br>
+<center>
 <%= link_to "#{current_order.cart_items.size} items with a value of #{current_order.subtotal}$", cards_path%>
-
+</center>
